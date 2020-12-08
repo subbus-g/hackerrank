@@ -1,6 +1,21 @@
 //https://www.hackerrank.com/challenges/time-conversion/problem
 #include <bits/stdc++.h>
 using namespace std;
+/*
+@@12AM----00@@
+1AM-----01
+2AM-----02
+    '
+    '
+11AM----11
+@@12PM----12@@
+1PM-----13
+2PM-----14
+     '
+     '
+10PM----22
+11PM----23
+*/
 string solve(string &s)
 {
     //extracting hrs
