@@ -16,24 +16,16 @@ using namespace std;
 10PM----22
 11PM----23
 */
-string solve(string &s)
+string solve(int &hh, int &mm, int &ss, char &period)
 {
-    //extracting hrs
-    int hrs = stoi(s.substr(0, 2)) % 12;
-
-    //checking if last 2nd character is P or not
-    if (s[s.length() - 2] == 'P')
+    hh %= 12;
+    if (period == 'P')
     {
-        hrs += 12;
+        hh += 12;
     }
-    stringstream ss(to_string(hrs));
-    //pads with 0 if variable is single digit for eg 5 is padded as 05
-    ss << setw(2) << setfill('0') << hrs;
-    //replacing hrs with modified hrs
-    s.replace(0, 2, ss.str());
-    s.pop_back();
-    s.pop_back();
-    return s;
+    ostringstream oss;
+    oss << setw(2) << setfill('0') << hh << ":" << setw(2) << setfill('0') << mm << ":" << setw(2) << setfill('0') << ss;
+    return oss.str();
 }
 int main()
 {
@@ -41,9 +33,10 @@ int main()
     cin.tie(0);
     cout.tie(0);
 
-    string s;
-    cin >> s;
-    cout << solve(s);
+    int hh, mm, ss;
+    char buffer, period;
+    cin >> hh >> buffer >> mm >> buffer >> ss >> period;
+    cout << solve(hh, mm, ss, period);
 
     return 0;
 }
