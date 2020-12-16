@@ -7,10 +7,8 @@ int sockMerchant(int n, vector<int> ar)
     map<int, int> freq;
     for (auto &x : ar)
     {
-        freq[x] = 0;
-    }
-    for (auto &x : ar)
-    {
+        if (freq.find(x) == freq.end())
+            freq[x] = 0;
         freq[x]++;
     }
     int count = 0;
