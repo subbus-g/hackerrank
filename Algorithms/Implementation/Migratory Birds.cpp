@@ -1,3 +1,5 @@
+//https://www.hackerrank.com/challenges/migratory-birds/problem
+
 #include <bits/stdc++.h>
 using namespace std;
 int migratoryBirds(vector<int> &arr)

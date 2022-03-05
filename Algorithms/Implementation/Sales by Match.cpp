@@ -1,3 +1,5 @@
+//https://www.hackerrank.com/challenges/sock-merchant/problem
+
 #include <bits/stdc++.h>
 using namespace std;
 
