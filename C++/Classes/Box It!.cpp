@@ -1,3 +1,4 @@
+
 #include <iostream>
 // #include<bits/stdc++.h>
 using namespace std;
@@ -29,67 +30,72 @@ public:
     {
         return h;
     }
-    friend bool operator<(Box bo,Box bx)
-    {
-        return bo.l < bx.l ||( (bo.b < bx.b) && (bo.l == bx.l)) ||( bo.h < bx.h && bo.b == bx.b && bo.l == bx.l);
-    }
     long long CalculateVolume()
     {
         return (long long)l * b * h;
     }
-    friend ostream &operator<<(ostream &os, Box &bx);
+    //'<' as member function
+    bool operator<(Box box)
+    {
+        return l < box.l || ((b < box.b) && (l == box.l)) || (h < box.h && b == box.b && l == box.l);
+    }
+    //'<' as friend function
+    // friend bool operator<(Box box1, Box box2)
+    // {
+    //     return box1.l < box2.l || ((box1.b < box2.b) && (box1.l == box2.l)) || (box1.h < box2.h && box1.b == box2.b && box1.l == box2.l);
+    // }
+    friend ostream &operator<<(ostream &os, Box bx)
+    {
+        os << bx.l << " " << bx.b << " " << bx.h;
+        return os;
+    }
 };
-ostream &operator<<(ostream &os, Box &bx)
-{
-    os << bx.l << " " << bx.b << " " << bx.h;
-    return os;
-}
+
 void check2()
 {
-	int n;
-	cin>>n;
-	Box temp;
-	for(int i=0;i<n;i++)
-	{
-		int type;
-		cin>>type;
-		if(type ==1)
-		{
-			cout<<temp<<endl;
-		}
-		if(type == 2)
-		{
-			int l,b,h;
-			cin>>l>>b>>h;
-			Box NewBox(l,b,h);
-			temp=NewBox;
-			cout<<temp<<endl;
-		}
-		if(type==3)
-		{
-			int l,b,h;
-			cin>>l>>b>>h;
-			Box NewBox(l,b,h);
-			if(NewBox<temp)
-			{
-				cout<<"Lesser\n";
-			}
-			else
-			{
-				cout<<"Greater\n";
-			}
-		}
-		if(type==4)
-		{
-			cout<<temp.CalculateVolume()<<endl;
-		}
-		if(type==5)
-		{
-			Box NewBox(temp);
-			cout<<NewBox<<endl;
-		}
-
-	}
+    int n;
+    cin >> n;
+    Box temp;
+    for (int i = 0; i < n; i++)
+    {
+        int type;
+        cin >> type;
+        if (type == 1)
+        {
+            cout << temp << endl;
+        }
+        if (type == 2)
+        {
+            int l, b, h;
+            cin >> l >> b >> h;
+            Box NewBox(l, b, h);
+            temp = NewBox;
+            cout << temp << endl;
+        }
+        if (type == 3)
+        {
+            int l, b, h;
+            cin >> l >> b >> h;
+            Box NewBox(l, b, h);
+            if (NewBox < temp)
+            {
+                cout << "Lesser\n";
+            }
+            else
+            {
+                cout << "Greater\n";
+            }
+        }
+        if (type == 4)
+        {
+            cout << temp.CalculateVolume() << endl;
+        }
+        if (type == 5)
+        {
+            Box NewBox(temp);
+            cout << NewBox << endl;
+        }
+    }
 }
 
 int main()
@@ -99,7 +105,6 @@ int main()
     freopen("..\\..\\3-out.txt", "w", stdout);
 #endif
     std::ios::sync_with_stdio(false);
-
 
     check2();
 
